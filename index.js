@@ -9,6 +9,7 @@ const { createClient } = require('@supabase/supabase-js');
 // 3. Configuració de l'API
 const app = express();
 const port = 3000; // La nostra API s'executarà al port 3000
+app.use(express.json());
 
 // 4. Configuració de Supabase
 const supabaseUrl = process.env.SUPABASE_URL;
@@ -42,6 +43,35 @@ app.get('/api/persones', async (req, res) => {
 
   } catch (error) {
     // Si hi ha qualsevol altre error, l'enviem com a resposta amb un estat 500
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// POST - Crear una nova persona
+app.post('/api/persones', async (req, res) => {
+  // req.body conté el JSON que envia el client (Apidog o el teu frontend)
+  const novaPersona = req.body; 
+  console.log("Rebuda petició per crear una nova persona:", novaPersona);
+
+  // Validació bàsica (en un projecte real seria més complexa)
+ // Validació corregida perquè coincideixi amb el teu JSON d'exemple
+if (!novaPersona.name || !novaPersona.age) {
+    return res.status(400).json({ error: "Falten les propietats 'name' o 'age'" });
+}
+
+  try {
+    const { data, error } = await supabase
+      .from('titanic')
+      .insert(novaPersona)
+      .select() // Important: retorna la fila que s'acaba de crear
+      .single();
+
+    if (error) throw error;
+
+    // Retornem un estat 201 (Created) i les dades de la nova persona
+    res.status(201).json(data);
+
+  } catch (error) {
     res.status(500).json({ error: error.message });
   }
 });
