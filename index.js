@@ -28,22 +28,28 @@ app.use(express.static('public')); // Servir fitxers estàtics
 app.get('/api/persones', async (req, res) => {
   console.log("Rebuda una petició a /api/persones");
 
-  try {
-    // Fem la consulta a la taula 'persones' de Supabase per obtenir totes les files
-    const { data, error } = await supabase
-      .from('titanic') // El nom de la teva taula
-      .select('*');     // '*' significa "totes les columnes"
+  const page = parseInt(req.query.page) || 1;
+  const limit = parseInt(req.query.limit) || 10;
+  const startIndex = (page - 1) * limit;
 
-    // Si Supabase retorna un error, l'enviem com a resposta
+  try {
+    const { data, error, count } = await supabase
+      .from('titanic')
+      .select('*', { count: 'exact' })
+      .range(startIndex, startIndex + limit - 1);
+
     if (error) {
       throw error;
     }
 
-    // Si tot va bé, enviem les dades obtingudes amb un estat 200 (OK)
-    res.status(200).json(data);
+    res.status(200).json({
+      total: count,
+      page,
+      limit,
+      data,
+    });
 
   } catch (error) {
-    // Si hi ha qualsevol altre error, l'enviem com a resposta amb un estat 500
     res.status(500).json({ error: error.message });
   }
 });

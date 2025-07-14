@@ -1,17 +1,23 @@
 document.addEventListener('DOMContentLoaded', () => {
     const passengersContainer = document.getElementById('passengers-container');
     const addPassengerForm = document.getElementById('add-passenger-form');
+    const prevPageButton = document.getElementById('prev-page');
+    const nextPageButton = document.getElementById('next-page');
+    const pageInfo = document.getElementById('page-info');
 
     const API_URL = 'http://localhost:3000/api/persones';
+    let currentPage = 1;
+    const limit = 10;
 
-    const fetchPassengers = async () => {
+    const fetchPassengers = async (page) => {
         try {
-            const response = await fetch(API_URL);
+            const response = await fetch(`${API_URL}?page=${page}&limit=${limit}`);
             if (!response.ok) {
                 throw new Error(`Error HTTP: ${response.status}`);
             }
-            const passengers = await response.json();
-            renderPassengers(passengers);
+            const result = await response.json();
+            renderPassengers(result.data);
+            updatePaginationControls(result.total, result.page, result.limit);
         } catch (error) {
             console.error('No s\'han pogut obtenir els passatgers:', error);
         }
@@ -29,6 +35,26 @@ document.addEventListener('DOMContentLoaded', () => {
             passengersContainer.innerHTML += passengerCard;
         });
     };
+
+    const updatePaginationControls = (total, page, limit) => {
+        const totalPages = Math.ceil(total / limit);
+        pageInfo.textContent = `Pàgina ${page} de ${totalPages}`;
+
+        prevPageButton.disabled = page <= 1;
+        nextPageButton.disabled = page >= totalPages;
+    };
+
+    prevPageButton.addEventListener('click', () => {
+        if (currentPage > 1) {
+            currentPage--;
+            fetchPassengers(currentPage);
+        }
+    });
+
+    nextPageButton.addEventListener('click', () => {
+        currentPage++;
+        fetchPassengers(currentPage);
+    });
 
     addPassengerForm.addEventListener('submit', async (event) => {
         event.preventDefault();
@@ -63,5 +89,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    fetchPassengers();
+    fetchPassengers(currentPage);
 });
