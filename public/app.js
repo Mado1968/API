@@ -82,8 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
             nameInput.value = '';
             ageInput.value = '';
 
-            currentPage = 1;
-            fetchPassengers(currentPage);
+            fetchPassengers(1);
 
         } catch (error) {
             console.error('Error en afegir el passatger:', error);
