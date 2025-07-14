@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 throw new Error(`Error HTTP: ${response.status}`);
             }
             const result = await response.json();
-            renderPassengers(result.data);
+            renderPassengers(result.data || []);
             updatePaginationControls(result.total, result.page, result.limit);
         } catch (error) {
             console.error('No s\'han pogut obtenir els passatgers:', error);
