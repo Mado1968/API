@@ -17,7 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             const result = await response.json();
             renderPassengers(result.data || []);
-            updatePaginationControls(result.total, result.page, result.limit);
+            if(result.total)
+                updatePaginationControls(result.total, result.page, result.limit);
         } catch (error) {
             console.error('No s\'han pogut obtenir els passatgers:', error);
         }
