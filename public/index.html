@@ -25,21 +25,23 @@
     <div class="container mx-auto p-4">
         <h1 class="text-4xl font-bold text-center mb-8">Passatgers del Titanic</h1>
 
-        <div id="form-container" class="mb-8 p-4 bg-secondary rounded-lg">
-            <h2 class="text-2xl font-bold mb-4">Afegir un nou passatger</h2>
-            <form id="add-passenger-form">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <input type="text" id="name" placeholder="Nom" class="p-2 rounded bg-tertiary text-light placeholder-light">
-                    <input type="number" id="age" placeholder="Edat" class="p-2 rounded bg-tertiary text-light placeholder-light">
-                </div>
-                <button type="submit" class="mt-4 bg-accent hover:bg-tertiary text-light font-bold py-2 px-4 rounded">
-                    Afegir passatger
-                </button>
-            </form>
-        </div>
+        <div class="flex flex-row gap-4">
+            <div id="form-container" class="w-1/3 p-4 bg-secondary rounded-lg">
+                <h2 class="text-2xl font-bold mb-4">Afegir un nou passatger</h2>
+                <form id="add-passenger-form">
+                    <div class="grid grid-cols-1 gap-4">
+                        <input type="text" id="name" placeholder="Nom" class="p-2 rounded bg-tertiary text-light placeholder-light">
+                        <input type="number" id="age" placeholder="Edat" class="p-2 rounded bg-tertiary text-light placeholder-light">
+                    </div>
+                    <button type="submit" class="mt-4 bg-accent hover:bg-tertiary text-light font-bold py-2 px-4 rounded">
+                        Afegir passatger
+                    </button>
+                </form>
+            </div>
 
-        <div id="passengers-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <!-- Les targetes dels passatgers s'insertaran aquí -->
+            <div id="passengers-container" class="w-2/3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Les targetes dels passatgers s'insertaran aquí -->
+            </div>
         </div>
 
         <div id="pagination-controls" class="flex justify-center items-center mt-8">
