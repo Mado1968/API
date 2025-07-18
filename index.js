@@ -21,6 +21,10 @@ app.use(cors()); // Activa CORS per permetre crides des de Apidog/frontend
 app.use(express.json()); // Permet que l'API entengui el format JSON a les peticions
 app.use(express.static('public')); // Servir fitxers estàtics
 
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/public/landing.html');
+});
+
 // -----------------------------------------------------
 // 6. DEFINICIÓ DE L'ENDPOINT (EL PUNT D'ACCÉS)
 // -----------------------------------------------------
