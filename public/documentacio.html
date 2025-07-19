@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentació del Titanic</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#0A1128',
+                        'secondary': '#001F54',
+                        'tertiary': '#034078',
+                        'accent': '#1282A2',
+                        'light': '#FEFCFB',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-light text-primary">
+    <div class="container mx-auto p-4">
+        <h1 class="text-4xl font-bold text-primary mb-8 text-center">Els Passatgers del Titanic: Distribució, Classes i Comoditats a Bord</h1>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="prose">
+                <h2 class="text-2xl font-bold text-secondary mb-4">Introducció: El Viatge Inaugural d'un Gegant</h2>
+                <p>El 10 d’abril de 1912, el RMS Titanic, considerat el vaixell més gran i luxós del seu temps, va salpar de Southampton amb destinació a Nova York. A bord viatjaven aproximadament 2.224 persones, entre passatgers i tripulació, cadascuna amb una experiència de viatge radicalment diferent, determinada per una estricta divisió de classes que reflectia la societat eduardiana de l'època.</p>
+                <p>Aquest document analitza la distribució dels passatgers i les grans diferències en les comoditats ofertes, des del luxe opulent de primera classe fins a les condicions bàsiques de tercera.</p>
+
+                <h2 class="text-2xl font-bold text-secondary mb-4">Distribució de Passatgers per Classe</h2>
+                <p>El passatge estava clarament segmentat en tres classes. Les xifres oficials mostren la següent distribució:</p>
+                <table class="w-full text-left">
+                    <thead>
+                        <tr>
+                            <th class="p-2 bg-secondary text-light">Classe</th>
+                            <th class="p-2 bg-secondary text-light">Nombre de Passatgers</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="p-2 border">Primera classe</td>
+                            <td class="p-2 border">325</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 border">Segona classe</td>
+                            <td class="p-2 border">285</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 border">Tercera classe</td>
+                            <td class="p-2 border">706</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 border font-bold">Total Passatgers</td>
+                            <td class="p-2 border font-bold">1.316</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>A aquests 1.316 passatgers cal sumar-hi els aproximadament 899 membres de la tripulació, conformant el total de persones a bord. Aquesta estructura no només definia l'espai físic, sinó també l'accés a serveis i, en última instància, les oportunitats de supervivència.</p>
+            </div>
+            <div class="flex items-center justify-center">
+                <img src="/01.jpg" alt="Imatge del Titanic" class="rounded-lg shadow-lg">
+            </div>
+        </div>
+
+        <div class="my-8">
+            <h2 class="text-3xl font-bold text-primary mb-4 text-center">Comparativa de les Comoditats: Un Món de Diferències</h2>
+            <p class="text-center mb-8">Les condicions de vida a bord variaven dràsticament entre les cobertes. El Titanic era un microcosmos on el luxe i la senzillesa convivien sense barrejar-se.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <img src="/02.jpg" alt="Primera Classe" class="rounded-lg shadow-lg mb-4">
+                <h3 class="text-xl font-bold text-secondary mb-2">1. Primera Classe: L'Opulència Flotant</h3>
+                <p>Els passatgers de primera classe gaudien d'un nivell de luxe comparable al dels millors hotels del món. Molts camarots eren suites de luxe amb salons privats, dormitoris espaiosos i, per primera vegada en un transatlàntic, banys individuals. Tenien accés a un restaurant a la carta, una biblioteca, una sala de fumadors, un gimnàs i una piscina coberta.</p>
+            </div>
+            <div>
+                <img src="/03.jpg" alt="Segona Classe" class="rounded-lg shadow-lg mb-4">
+                <h3 class="text-xl font-bold text-secondary mb-2">2. Segona Classe: Confort i Dignitat</h3>
+                <p>La segona classe del Titanic oferia un nivell de confort molt superior a la mitjana dels vaixells de l'època. Els camarots eren còmodes i comptaven amb el seu propi saló, menjador i biblioteca. Les instal·lacions eren d'alt nivell, oferint una experiència de viatge elegant.</p>
+            </div>
+            <div>
+                <img src="/05.jpg" alt="Tercera Classe" class="rounded-lg shadow-lg mb-4">
+                <h3 class="text-xl font-bold text-secondary mb-2">3. Tercera Classe: El Viatge de l'Esperança</h3>
+                <p>La tercera classe allotjava principalment immigrants. Tot i ser la més bàsica, les seves condicions eren millors que les d'altres vaixells. Els camarots eren compartits i les instal·lacions limitades, amb més de 700 passatgers compartint només dues banyeres.</p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 my-8">
+            <div class="flex items-center justify-center">
+                <img src="/06.jpg" alt="Imatge interior del vaixell" class="rounded-lg shadow-lg">
+            </div>
+            <div class="prose">
+                <h2 class="text-2xl font-bold text-secondary mb-4">Conclusió: Un Reflex de la Desigualtat Social</h2>
+                <p>La rígida estructura de classes del Titanic no era només una qüestió de preu o de luxe, sinó un reflex fidel de les profundes diferències socials de principis del segle XX. Aquesta separació física i social, que determinava des de la qualitat del menjar fins a l'accés a una simple dutxa, va tenir conseqüències tràgiques. Com es demostraria durant el naufragi, la ubicació a les cobertes inferiors i les restriccions de moviment van condemnar un percentatge molt més alt de passatgers de tercera classe, convertint la seva experiència a bord en un factor determinant per a la seva supervivència.</p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+            <img src="/08.jpg" alt="Detall del vaixell" class="rounded-lg shadow-lg">
+            <img src="/09.jpg" alt="Detall del vaixell 2" class="rounded-lg shadow-lg">
+        </div>
+        <div class="text-center mt-8">
+            <a href="/landing.html" class="bg-accent hover:bg-tertiary text-light font-bold py-2 px-4 rounded">Tornar a la pàgina principal</a>
+        </div>
+    </div>
+</body>
+</html>
