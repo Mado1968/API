@@ -1,12 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
     const passengersContainer = document.getElementById('passengers-container');
     const addPassengerForm = document.getElementById('add-passenger-form');
+    const firstPageButton = document.getElementById('first-page');
     const prevPageButton = document.getElementById('prev-page');
     const nextPageButton = document.getElementById('next-page');
+    const lastPageButton = document.getElementById('last-page');
     const pageInfo = document.getElementById('page-info');
 
     const API_URL = 'http://localhost:3000/api/persones';
     let currentPage = 1;
+    let totalPages = 1;
     const limit = 20;
 
     const fetchPassengers = async (page) => {
@@ -37,12 +40,21 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const updatePaginationControls = (total, page, limit) => {
-        const totalPages = Math.ceil(total / limit);
+        totalPages = Math.ceil(total / limit);
         pageInfo.textContent = `Pàgina ${page} de ${totalPages}`;
 
+        firstPageButton.disabled = page <= 1;
         prevPageButton.disabled = page <= 1;
         nextPageButton.disabled = page >= totalPages;
+        lastPageButton.disabled = page >= totalPages;
     };
+
+    firstPageButton.addEventListener('click', () => {
+        if (currentPage > 1) {
+            currentPage = 1;
+            fetchPassengers(currentPage);
+        }
+    });
 
     prevPageButton.addEventListener('click', () => {
         if (currentPage > 1) {
@@ -52,8 +64,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     nextPageButton.addEventListener('click', () => {
-        currentPage++;
-        fetchPassengers(currentPage);
+        if (currentPage < totalPages) {
+            currentPage++;
+            fetchPassengers(currentPage);
+        }
+    });
+
+    lastPageButton.addEventListener('click', () => {
+        if (currentPage < totalPages) {
+            currentPage = totalPages;
+            fetchPassengers(currentPage);
+        }
     });
 
     addPassengerForm.addEventListener('submit', async (event) => {
