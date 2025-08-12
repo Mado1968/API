@@ -37,6 +37,19 @@
                         Afegir passatger
                     </button>
                 </form>
+
+                <div id="login-form-container" class="mt-8 p-4 bg-tertiary rounded-lg hidden">
+                    <h2 class="text-2xl font-bold mb-4">Login</h2>
+                    <form id="loginForm">
+                        <div class="grid grid-cols-1 gap-4">
+                            <input type="email" id="login-email" placeholder="Email" class="p-2 rounded bg-secondary text-light placeholder-light" required>
+                            <input type="password" id="login-password" placeholder="Password" class="p-2 rounded bg-secondary text-light placeholder-light" required>
+                        </div>
+                        <button type="submit" class="mt-4 bg-accent hover:bg-secondary text-light font-bold py-2 px-4 rounded">
+                            Login
+                        </button>
+                    </form>
+                </div>
             </div>
 
             <div id="passengers-container" class="w-2/3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
