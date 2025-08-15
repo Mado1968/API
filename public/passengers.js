@@ -39,6 +39,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="bg-secondary p-4 rounded-lg shadow-lg">
                     <h3 class="text-xl font-bold text-accent">${passenger.name}</h3>
                     <p class="text-light">Edat: ${passenger.age}</p>
+                    <p class="text-light">Classe: ${passenger.Pclass}</p>
+                    <p class="text-light">Cabina: ${passenger.Cabin}</p>
                 </div>
             `;
             passengersContainer.innerHTML += passengerCard;
@@ -100,6 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (!token) {
             // If no token, show login form and store pending passenger data
+            showToast('Cal estar registrat per afegir un passatger.', false);
             loginFormContainer.classList.remove('hidden');
             pendingPassengerData = newPassenger;
             return;
@@ -119,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!response.ok) {
                 // If 401 or 403, token might be invalid/expired, prompt for login
                 if (response.status === 401 || response.status === 403) {
-                    alert('Your session has expired or is invalid. Please log in again.');
+                    showToast('La teva sessió ha expirat o no és vàlida. Si us plau, torna a iniciar la sessió.', false);
                     localStorage.removeItem('jwtToken'); // Clear invalid token
                     loginFormContainer.classList.remove('hidden');
                     pendingPassengerData = newPassenger; // Store for re-submission
@@ -136,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         } catch (error) {
             console.error('Error en afegir el passatger:', error);
-            alert('Error adding passenger: ' + error.message);
+            showToast('Error en afegir el passatger: ' + error.message, false);
         }
     });
 
@@ -159,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (response.ok) {
                 localStorage.setItem('jwtToken', data.token);
-                alert('Login successful!');
+                showToast('Login correcte!');
                 loginFormContainer.classList.add('hidden'); // Hide login form
 
                 // If there was pending passenger data, re-submit it
@@ -171,11 +174,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
             } else {
-                alert(`Login failed: ${data.error}`);
+                showToast(`Error en el login: ${data.error}`, false);
             }
         } catch (error) {
             console.error('Error during login:', error);
-            alert('An error occurred during login.');
+            showToast('Ha ocorregut un error durant el login.', false);
         }
     });
 
