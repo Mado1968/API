@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!response.ok) {
                 // If 401 or 403, token might be invalid/expired, prompt for login
                 if (response.status === 401 || response.status === 403) {
-                    showToast('La teva sessió ha expirat o no és vàlida. Si us plau, torna a iniciar la sessió.', false);
+                    showToast(' Inicia la sessió.', false);
                     localStorage.removeItem('jwtToken'); // Clear invalid token
                     loginFormContainer.classList.remove('hidden');
                     pendingPassengerData = newPassenger; // Store for re-submission
@@ -135,6 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ageInput.value = '';
             pendingPassengerData = null; // Clear pending data on success
 
+            showToast('Passatger afegit correctament!');
             fetchPassengers();
 
         } catch (error) {

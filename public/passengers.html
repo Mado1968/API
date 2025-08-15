@@ -5,41 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Passatgers del Titanic</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'primary': '#0A1128',
-                        'secondary': '#001F54',
-                        'tertiary': '#034078',
-                        'accent': '#1282A2',
-                        'light': '#FEFCFB',
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        #toast-container {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-            width: 300px;
-            padding: 16px;
-            border-radius: 8px;
-            color: white;
-            font-size: 16px;
-            display: none;
-        }
-        .toast-success {
-            background-color: #28a745;
-        }
-        .toast-error {
-            background-color: #dc3545;
-        }
-    </style>
+    <script src="tailwind.config.js"></script>
+    <link rel="stylesheet" href="titanic.css">
 </head>
 <body class="bg-primary text-light">
     <div id="toast-container"></div>

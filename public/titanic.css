@@ -1,0 +1,20 @@
+
+#toast-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    width: 300px;
+    padding: 16px;
+    border-radius: 8px;
+    color: white;
+    font-size: 18px;
+    display: none;
+}
+.toast-success {
+    background-color: #28a745;
+}
+.toast-error {
+    background-color: #dc3545;
+}
